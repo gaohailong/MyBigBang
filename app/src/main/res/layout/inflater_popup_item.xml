@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/popup_tv_news"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="新闻"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_margin="5dp" />
+
+    <TextView
+        android:id="@+id/popup_tv_announcement"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="公告"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/popup_tv_quality"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="精品"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/popup_tv_photo"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="相册"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+
+    <TextView
+        android:id="@+id/popup_tv_vote"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="投票教程"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/popup_tv_story"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="故事"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/popup_tv_travel"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="行程"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"/>
+
+</LinearLayout>

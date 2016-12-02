@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailBrowerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#f74349">
+        <ImageView
+            android:id="@+id/newsbrower_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/back2"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/browertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/browers_news"
+            android:layout_centerInParent="true"
+            android:textSize="18sp"/>
+        <ImageView
+            android:id="@+id/newsbrower_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/menu1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/news_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="#崔胜铉1104生日快乐#"
+        android:textSize="22sp"
+        android:layout_margin="10dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/news_tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"/>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+            android:background="#747474"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center_horizontal">
+        </View>
+
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/news_tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_margin="10dp" />
+
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

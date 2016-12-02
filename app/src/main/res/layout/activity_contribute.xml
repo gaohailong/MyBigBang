@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.asus.mybigbang.ContributeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#6b6a6a">
+        <ImageView
+            android:id="@+id/back_image"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back"/>
+        <TextView
+            android:id="@+id/title_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_content"
+            android:textSize="20sp"
+            android:textColor="#fcfbfb"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/issue_title"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:hint="请在这里输入标题"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/frame1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <ImageView
+        android:id="@+id/upload_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/upload_image"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/whereissue"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:text="@string/whereissue"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:background="@mipmap/rectabgle"/>
+
+    <EditText
+        android:id="@+id/content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@mipmap/frame"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+
+
+    <Button
+        android:id="@+id/issue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="发布"
+        android:background="@drawable/btn_shape"/>
+</LinearLayout>

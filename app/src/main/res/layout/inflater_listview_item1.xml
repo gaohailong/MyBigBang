@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/travel_date"
+        android:layout_weight="0.2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2016-12-12"
+        android:textSize="13sp"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_vertical"/>
+
+    <LinearLayout
+        android:layout_weight="0.8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/travel_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="胜酱生日粗卡！"
+            android:textSize="16sp"
+            android:background="@mipmap/travel"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="需要家人支持"
+            android:textSize="15sp"
+            android:layout_marginTop="3dp"/>
+
+    </LinearLayout>
+</LinearLayout>
