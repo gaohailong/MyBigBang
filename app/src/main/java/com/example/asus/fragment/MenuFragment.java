@@ -42,7 +42,7 @@ public class MenuFragment extends Fragment {
         //用适配器把Fragment显示到viewpager中
         adapter=new ViewPagerAdapter(getFragmentManager());
         pager.setAdapter(adapter);
-        pager.setOffscreenPageLimit(5);
+        pager.setOffscreenPageLimit(6);
 
         loadData();
 
@@ -91,11 +91,11 @@ public class MenuFragment extends Fragment {
         pf.setArguments(b4);
         listf.add(pf);
         //投票教程Fragment
-        NewsFragment mf5=new NewsFragment();
+        VoteFragment vf=new VoteFragment();
         Bundle b5=new Bundle();
         b5.putInt("type",(i+5));
-        mf5.setArguments(b5);//用于Fragment进行传值
-        listf.add(mf5);
+        vf.setArguments(b5);//用于Fragment进行传值
+        listf.add(vf);
         //故事Fragment
         StoryFragment sf=new StoryFragment();
         Bundle b6=new Bundle();

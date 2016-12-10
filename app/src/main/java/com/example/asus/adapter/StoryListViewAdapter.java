@@ -64,17 +64,22 @@ public class StoryListViewAdapter extends BaseAdapter{
         }else{
             holder= (MyHolder) convertView.getTag();
         }
+        //防止不够五条数据时报空指针
+        try {
+            Story story=list6.get(position);
+            holder.title.setText(story.getTitle());
+            holder.content.setText(story.getContent());
+            holder.date.setText(story.getDate().getDate());
 
-        Story story=list6.get(position);
-        holder.title.setText(story.getTitle());
-        holder.content.setText(story.getContent());
-        holder.date.setText(story.getDate().getDate());
+            DisplayImageOptions options=new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
 
-        DisplayImageOptions options=new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+            ImageLoader.getInstance().displayImage(String.valueOf(story.getImage().getFileUrl()),holder.image,options);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        ImageLoader.getInstance().displayImage(String.valueOf(story.getImage().getFileUrl()),holder.image,options);
 
         return convertView;
     }

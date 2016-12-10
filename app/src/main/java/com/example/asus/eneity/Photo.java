@@ -1,11 +1,14 @@
 package com.example.asus.eneity;
 
+import java.io.Serializable;
+
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2016/11/28.
  */
-public class Photo {
+public class Photo extends BmobObject {
     private BmobFile image;
     private String title;
     public BmobFile getImage() {

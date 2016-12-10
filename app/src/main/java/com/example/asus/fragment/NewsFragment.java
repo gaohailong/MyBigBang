@@ -124,7 +124,7 @@ public class NewsFragment extends Fragment implements PullToRefreshBase.OnRefres
 
     }
 
-
+    //新闻每一行的点击事件，跳至消息详情页
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 

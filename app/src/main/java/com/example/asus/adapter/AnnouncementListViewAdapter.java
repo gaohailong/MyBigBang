@@ -71,17 +71,23 @@ public class AnnouncementListViewAdapter extends BaseAdapter{
         }else{
             holder= (MyHolder) convertView.getTag();
         }
+        //防止不够五条数据时报空指针
+        try {
+            Announcement announcement=list2.get(position);
+            holder.title.setText(announcement.getTitle());
+            holder.content.setText(announcement.getContent());
+            holder.date.setText(announcement.getDate().getDate());
 
-        Announcement announcement=list2.get(position);
-        holder.title.setText(announcement.getTitle());
-        holder.content.setText(announcement.getContent());
-        holder.date.setText(announcement.getDate().getDate());
+            DisplayImageOptions options=new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
 
-        DisplayImageOptions options=new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+            ImageLoader.getInstance().displayImage(String.valueOf(announcement.getImage().getFileUrl()),holder.image,options);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        ImageLoader.getInstance().displayImage(String.valueOf(announcement.getImage().getFileUrl()),holder.image,options);
+
 
         return convertView;
     }

@@ -90,6 +90,7 @@ public class RegisterActivity extends BaseActivity {
                 if (e==null){
                     saveregister(name,pwd);
                     Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+
                 }else {
                     Toast.makeText(RegisterActivity.this, "注册失败！", Toast.LENGTH_SHORT).show();
                 }

@@ -2,14 +2,18 @@ package com.example.asus.mybigbang;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.asus.adapter.NewsListViewAdapter;
 import com.example.asus.base.BaseActivity;
@@ -31,6 +35,7 @@ public class MainActivity extends BaseActivity {
     Fragment currentFragment;
     NewsListViewAdapter adapter;
 
+    private boolean isExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +131,45 @@ public class MainActivity extends BaseActivity {
         ft.commit();
         currentFragment=toFragment;
     }
+
+
+    // 重写Activity中onKeyDown（）方法
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {// 当keyCode等于退出事件值时
+            ToQuitTheApp();
+            return false;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
+
+    //封装ToQuitTheApp方法
+    private void ToQuitTheApp() {
+        if (isExit) {
+            // ACTION_MAIN with category CATEGORY_HOME 启动主屏幕
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            startActivity(intent);
+            System.exit(0);// 使虚拟机停止运行并退出程序
+        } else {
+            isExit = true;
+            Toast.makeText(MainActivity.this, "再按一次退出APP", Toast.LENGTH_SHORT).show();
+            mHandler.sendEmptyMessageDelayed(0, 3000);// 3秒后发送消息
+        }
+    }
+
+    //创建Handler对象，用来处理消息
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {//处理消息
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
+
 
 
 }
