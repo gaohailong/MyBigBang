@@ -5,5 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color1">#c4c1c2</color>
     <color name="color2">#292325</color>
-
+    <color name="colorPrimarsy">#5D81B3</color>
+    <color name="colorPrimarsyd">#EABC41</color>
 </resources>
