@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,11 @@ import com.example.asus.eneity._User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class LoginActivity extends BaseActivity {
@@ -32,6 +37,7 @@ public class LoginActivity extends BaseActivity {
     Button login_btn;
     Button register_btn;
     ImageView login_back;
+    String objectid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
@@ -80,23 +86,36 @@ public class LoginActivity extends BaseActivity {
         });
     }
 
-    public void login(final String name3, final String pwd3){
-        _User user=new _User();
-        user.setUsername(name3);
-        user.setPassword(pwd3);
-        user.setUserPwd(pwd3);
-        user.signUp(new SaveListener<Object>() {
+    public void login(final String name, final String pwd){
+        BmobQuery<_User> query = new BmobQuery<_User>();
+        query.findObjects(new FindListener<_User>() {
             @Override
-            public void done(Object o, BmobException e) {
+            public void done(List<_User> object, BmobException e) {
+                int u=0;
                 if (e==null){
-                    save(name3,pwd3);
-                    Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                    for (int i=0;i<object.size();i++){
+                        _User user=object.get(i);
+                        if (name.equals(user.getUsername())){
+                            String password=user.getUserPwd();
+                            //根据登录用户获取到其Id，用于与收藏表关联
+                             objectid=user.getObjectId();
+
+                            if (pwd.equals(password)){
+                                save(name,pwd);
+                                Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                                u=1;
+                                break;
+                            }
+                        }
+                    }
+                      if (u==0){
+                          Toast.makeText(LoginActivity.this, "信息不正确！", Toast.LENGTH_SHORT).show();
+                      }
+
+
                 }else {
-                    Toast.makeText(LoginActivity.this, "登录失败！", Toast.LENGTH_SHORT).show();
-
+                    Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
                 }
-
-
             }
         });
     }
@@ -111,13 +130,17 @@ public class LoginActivity extends BaseActivity {
         SharedPreferences.Editor e=sp.edit();
         e.putString("name",name);
         e.putString("pwd",pwd);
+        e.putString("objectid",objectid);
         e.putBoolean("islogin",true);
         e.commit();
     }
+
 
 
     @Override
     public void loadData() {
 
     }
+
+
 }

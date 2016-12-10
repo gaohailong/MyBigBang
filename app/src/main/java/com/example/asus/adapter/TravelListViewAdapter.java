@@ -1,19 +1,14 @@
 package com.example.asus.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.asus.eneity.News;
 import com.example.asus.eneity.Travel;
 import com.example.asus.mybigbang.R;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +48,20 @@ public class TravelListViewAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView==null){
-            convertView=inflater.inflate(R.layout.inflater_listview_item1,null);
+            convertView=inflater.inflate(R.layout.inflater_travellistview_item,null);
         }
         TextView date= (TextView) convertView.findViewById(R.id.travel_date);
         TextView content= (TextView) convertView.findViewById(R.id.travel_content);
 
-        Travel travel=list7.get(position);
-        date.setText(travel.getDate().getDate());
-        content.setText(travel.getContent());
+        //防止不够五条数据时报空指针
+        try {
+            Travel travel=list7.get(position);
+            date.setText(travel.getDate().getDate());
+            content.setText(travel.getContent());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return convertView;
     }
 }

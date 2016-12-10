@@ -2,6 +2,7 @@ package com.example.asus.mybigbang;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
@@ -62,6 +64,7 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
     ImageView upload_image;
     EditText content;
     TextView whereissue;
+    TextView issue_date;
     View vi;
     PopupWindow pw;
     TextView popup_tv_news;
@@ -93,6 +96,7 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
         upload_image= (ImageView) findViewById(R.id.upload_image);
         content= (EditText) findViewById(R.id.content);
         whereissue= (TextView) findViewById(R.id.whereissue);
+        issue_date= (TextView) findViewById(R.id.issue_date);
 
         popup_tv_news= (TextView) vi.findViewById(R.id.popup_tv_news);
         popup_tv_announcement= (TextView) vi.findViewById(R.id.popup_tv_announcement);
@@ -140,10 +144,15 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
                 startActivityForResult(intent,IMAGE);
                 break;
             case R.id.issue:
+                Intent i=new Intent();
+                //判断如果已经登陆的话进行发布，否则跳转至登录界面
+                if (isLogin()){
                 //发布按钮的监听事件
                 final String title=issue_title.getText().toString().trim();
                 final String issuecontent=content.getText().toString().trim();
-                final String date=getNowDate();
+                Date d=new Date(System.currentTimeMillis());
+                final BmobDate date=new BmobDate(d);
+
                 final BmobFile bf=new BmobFile(f);
                 bf.upload(new UploadFileListener() {
                     @Override
@@ -152,6 +161,7 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
                             News inew=new News();
                             inew.setImage(bf);
                             inew.setTitle(title);
+                            inew.setDate(date);
                             inew.setContent(issuecontent);
 
                             inew.save(new SaveListener<String>() {
@@ -244,8 +254,13 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
 
                         }
 
-                    }
-                });
+                     }
+                 });
+
+                }else {
+                    i.setClass(this,LoginActivity.class);
+                    startActivity(i);
+                }
                 break;
             //popupWindow弹出要选择的频道
             case R.id.whereissue:
@@ -317,9 +332,9 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
 
 
 
-
     }
 
+    //获取系统当前时间
     public String getNowDate(){
         long l = System.currentTimeMillis();
         Date d = new Date(l);
@@ -327,6 +342,14 @@ public class ContributeActivity extends BaseActivity implements View.OnClickList
         String str = f.format(d);
         return str;
     }
+
+
+    public boolean isLogin(){
+        SharedPreferences sp=getSharedPreferences("login",MODE_PRIVATE);
+        boolean islogin=sp.getBoolean("islogin",false);
+        return islogin;
+    }
+
 
 }
 

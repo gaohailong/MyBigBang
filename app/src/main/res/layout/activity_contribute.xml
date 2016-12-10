@@ -49,7 +49,6 @@
         android:layout_width="250dp"
         android:layout_height="25dp"
         android:text="@string/whereissue"
-        android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:background="@mipmap/rectabgle"/>
@@ -64,12 +63,18 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"/>
 
+    <TextView
+        android:id="@+id/issue_date"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center" />
+
 
     <Button
         android:id="@+id/issue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:text="发布"
         android:background="@drawable/btn_shape"/>
 </LinearLayout>

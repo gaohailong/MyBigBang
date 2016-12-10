@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.asus.mybigbang.AboutActivity;
+import com.example.asus.mybigbang.CollectionActivity;
 import com.example.asus.mybigbang.LoginActivity;
 import com.example.asus.mybigbang.R;
 import com.example.asus.mybigbang.RegisterActivity;
@@ -71,7 +72,8 @@ public class SettingFragment extends Fragment {
         setting_collection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(getActivity(), CollectionActivity.class);
+                startActivity(intent);
             }
         });
 

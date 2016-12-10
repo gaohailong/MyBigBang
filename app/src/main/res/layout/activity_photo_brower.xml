@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.asus.mybigbang.PhotoBrowerActivity">
+
+    <TextView
+        android:id="@+id/photo_title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="#胜酱生日粗卡#"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:background="#f44343"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/photo_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"/>
+
+</LinearLayout>

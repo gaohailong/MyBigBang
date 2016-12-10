@@ -37,13 +37,6 @@ public class NewsListViewAdapter extends BaseAdapter{
         list1.addAll(listinfo1);
     }
 
-    public void addDataToHeader(ArrayList<News> listinfo){
-        list1.addAll(0,listinfo);
-    }
-    public void addDataToFooter(ArrayList<News> listinfo){
-        list1.addAll(listinfo);
-    }
-
     @Override
     public int getCount() {
         return list1.size();
@@ -73,17 +66,23 @@ public class NewsListViewAdapter extends BaseAdapter{
         }else{
             holder= (MyHolder) convertView.getTag();
         }
+        //防止不够五条数据时报空指针
+        try {
+            News info=list1.get(position);
+            holder.title.setText(info.getTitle());
+            holder.content.setText(info.getContent());
+            holder.date.setText(info.getDate().getDate());
 
-        News info=list1.get(position);
-        holder.title.setText(info.getTitle());
-        holder.content.setText(info.getContent());
-        holder.date.setText(info.getDate().getDate());
+            DisplayImageOptions options=new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
 
-        DisplayImageOptions options=new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+            ImageLoader.getInstance().displayImage(String.valueOf(info.getImage().getFileUrl()),holder.image,options);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        ImageLoader.getInstance().displayImage(String.valueOf(info.getImage().getFileUrl()),holder.image,options);
+
 
         return convertView;
     }

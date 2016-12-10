@@ -72,16 +72,21 @@ public class QualityListViewAdapter extends BaseAdapter {
             holder= (MyHolder) convertView.getTag();
         }
 
-        Quality quality=list3.get(position);
-        holder.title.setText(quality.getTitle());
-        holder.content.setText(quality.getContent());
-        holder.date.setText(quality.getDate().getDate());
+        //防止不够五条数据时报空指针
+        try{
+            Quality quality=list3.get(position);
+            holder.title.setText(quality.getTitle());
+            holder.content.setText(quality.getContent());
+            holder.date.setText(quality.getDate().getDate());
 
-        DisplayImageOptions options=new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
-                .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
+            DisplayImageOptions options=new DisplayImageOptions.Builder()
+                    .cacheInMemory(true)
+                    .cacheOnDisk(true).bitmapConfig(Bitmap.Config.RGB_565).build();
 
-        ImageLoader.getInstance().displayImage(String.valueOf(quality.getImage().getFileUrl()),holder.image,options);
+            ImageLoader.getInstance().displayImage(String.valueOf(quality.getImage().getFileUrl()),holder.image,options);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         return convertView;
     }

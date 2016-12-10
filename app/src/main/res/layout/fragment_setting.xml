@@ -1,13 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="500dp"
     android:orientation="vertical"
     tools:context="com.example.asus.fragment.SettingFragment">
 
     <RelativeLayout
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="0dp">
 
         <ImageView
             android:id="@+id/headportrait"
@@ -19,6 +20,12 @@
     </RelativeLayout>
 
 
+ <LinearLayout
+     android:layout_weight="1"
+     android:layout_width="match_parent"
+     android:layout_height="0dp"
+     android:orientation="vertical"
+     android:gravity="center">
     <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -115,5 +122,5 @@
             android:gravity="center_vertical"/>
     </RelativeLayout>
 
-
+   </LinearLayout>
 </LinearLayout>
